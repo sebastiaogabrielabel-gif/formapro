@@ -25,7 +25,8 @@ export async function GET(request: NextRequest) {
         getAll() {
           return request.cookies.getAll();
         },
-        setAll(cookiesToSet) {
+setAll(cookiesToSet: { name: string; value: string; options: any }[]) {
+
           cookiesToSet.forEach(({ name, value, options }) => {
             // Make new cookies visible to subsequent calls in this handler
             request.cookies.set(name, value);
